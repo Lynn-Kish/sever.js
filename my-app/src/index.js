@@ -1,40 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import App from './App';
 
-const AddCyclist = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    age: '',
-    residence: '',
-    contact: '',
-    kinName: '',
-    kinAddress: '',
-    kinContact: '',
-    regNumber: '',
-    stage: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Send the data to the back-end for processing (not shown in this example).
-  };
-
-  return (
-    <div>
-      <h2>Add New Boda-Boda Cyclist Record</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Form fields go here, e.g., input elements for each data field */}
-        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
-        {/* Repeat for other fields */}
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-};
-
-export default AddCyclist;
-
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <Switch>
+        <Route path="/" component={App} />
+      </Switch>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
